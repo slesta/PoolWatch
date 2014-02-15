@@ -1,4 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 __author__ = 'lacina'
+
+import sys, os, re, urllib2, datetime, random
+import time
+import socket
+
+PYTHONPATH=myprojectdir:$PYTHONPATH
+DJANGO_SETTINGS_MODULE=project.settings.production virtualenv/bin/django-admin.py updateactivites
+
+
+# Preamble so we can use Django's DB API
+path = os.path.normpath(os.path.join(os.getcwd(), '..'))
+sys.path.append(path)
+sys.path.append(os.path.abspath(__file__))
+#sys.path.append('/usr/share/pyshared/')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
+
+# Load up Django
+from django.db import models
+from poolWatchApp.models import *
+from django.contrib.auth.models import User as AuthUser
+
+
+nastaveni=Generalset.objects.get(pk=1)
 
 import urllib2
 
