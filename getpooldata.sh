@@ -4,5 +4,5 @@
 # used by cron
 
 cd `dirname $0`
-source env/bin/activate
+source /home/lacina/PoolWatchEnv/bin/activate
 python "${@:1}"

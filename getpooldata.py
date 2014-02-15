@@ -7,15 +7,13 @@ import sys, os, re, urllib2, datetime, random
 import time
 import socket
 
-PYTHONPATH=myprojectdir:$PYTHONPATH
-DJANGO_SETTINGS_MODULE=project.settings.production virtualenv/bin/django-admin.py updateactivites
 
-
-# Preamble so we can use Django's DB API
+#
+# # Preamble so we can use Django's DB API
 path = os.path.normpath(os.path.join(os.getcwd(), '..'))
 sys.path.append(path)
 sys.path.append(os.path.abspath(__file__))
-#sys.path.append('/usr/share/pyshared/')
+# #sys.path.append('/usr/share/pyshared/')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
 
 # Load up Django
@@ -24,16 +22,27 @@ from poolWatchApp.models import *
 from django.contrib.auth.models import User as AuthUser
 
 
-nastaveni=Generalset.objects.get(pk=1)
+
+
 
 import urllib2
 
-def getData(address):
-    response = urllib2.urlopen(address)
+def getData(pool):
+    address = pool.urlstats
+    req = urllib2.Request(address, headers={'User-Agent' : "Magic Browser"})
+    try:
+        response = urllib2.urlopen(req)
+    except urllib2.HTTPError, e:
+        pool.responseErr= e.fp.read()
+        pool.save()
+    finally:
+        pass
+
+
     html = response.read()
     return html
 
-def pageParser(html):
+def pageParser(pool, html):
     import re
 
     # common variables
@@ -52,12 +61,20 @@ def pageParser(html):
     poolHashRateUnit = match_obj.group('poolHashRateUnit')
     poolEfficiency = match_obj.group('poolEfficiency')
     CDiff = match_obj.group('CDiff')
-    print poolHashRate
-    print poolHashRateUnit
     print poolEfficiency
-    print CDiff
+    if poolHashRateUnit == 'MH/s':
+        poolHashRate=float(poolHashRate)*1000
+    pool.poolHashRate = poolHashRate
+    pool.poolEfficiency = float(poolEfficiency.replace('%', ''))
+    pool.currency.cdif=float(CDiff)
+    pool.save()
+
 
 
 #print getData('https://cash.hash.so')
-pageParser(getData('https://cash.hash.so/index.php?page=statistics&action=pool'))
+poolList = Pool.objects.all()
+for pool in poolList:
+    pageParser(pool, html=getData(pool))
+
+
 
