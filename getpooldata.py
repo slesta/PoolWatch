@@ -12,13 +12,24 @@ import time
 
 
 
-#
-# # Preamble so we can use Django's DB API
-path = os.path.normpath(os.path.join(os.getcwd(), '..'))
-sys.path.append(path)
-sys.path.append(os.path.abspath(__file__))
-# #sys.path.append('/usr/share/pyshared/')
-os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
+# #
+# # # Preamble so we can use Django's DB API
+# path = os.path.normpath(os.path.join(os.getcwd(), '..'))
+# sys.path.append(path)
+# sys.path.append(os.path.abspath(__file__))
+# # #sys.path.append('/usr/share/pyshared/')
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
+
+
+def setup_environment():
+    pathname = os.path.dirname(sys.argv[0])
+    sys.path.append(os.path.abspath(pathname))
+    sys.path.append(os.path.normpath(os.path.join(os.path.abspath(pathname), '../')))
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+# Must set up environment before imports.
+setup_environment()
+
 
 # Load up Django
 from poolWatchApp.models import *

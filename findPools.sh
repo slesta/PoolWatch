@@ -5,4 +5,4 @@
 
 cd `dirname $0`
 source /home/lacina/PoolWatchEnv/bin/activate
-python "getpooldata.py"
+python "findPools.py"
