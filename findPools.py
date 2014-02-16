@@ -91,7 +91,7 @@ class PoolT():
                 self.state = True
                 self.statsUrl = self.httpURL + '/index.php?page=statistics&action=pool'
                 self.statUrlJSON = self.httpURL + '/index.php?page=api&action=getpoolstatus&api_key='
-                self.currencyCheckPage = self.httpURL + '/index.php?page=gettingstarted'
+                self.currencyCheckPage = self.httpURL + '/index.php?page=statistics&action=pool'
 
     def testPoolCurrency(self):
         if self.state:
@@ -102,12 +102,13 @@ class PoolT():
             if self.htmlOfGivenUrl:
                 self.htmlOfGivenUrlClear = self.cleanHtml(self.htmlOfGivenUrl)
                 #print self.htmlOfGivenUrlClear
-                if re.search(self.currency.shortname.lower(), self.htmlOfGivenUrlClear):
-                    self.stateStats = True
-                    self.state = True
-                if re.search(self.currency.shortname, self.htmlOfGivenUrlClear):
-                    self.stateStats = True
-                    self.state = True
+                if not self.currency.shortname == 'BTC':
+                    if re.search(self.currency.shortname.lower() + '/Day', self.htmlOfGivenUrlClear):
+                        self.stateStats = True
+                        self.state = True
+                    if re.search(self.currency.shortname + '/Day', self.htmlOfGivenUrlClear):
+                        self.stateStats = True
+                        self.state = True
 
 
     # otestuje dostupnost statistik
@@ -138,9 +139,10 @@ class PoolT():
                 pool.urljson = self.statUrlJSON
                 pool.currency = self.currency
                 pool.save()
+                print pool.name
 
 
-urlStack = UrlStack.objects.all() #filter(processed=False)
+urlStack = UrlStack.objects.all().filter(processed=False)
 currencies = Currency.objects.all()
 
 for urlItem in urlStack:

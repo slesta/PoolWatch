@@ -118,6 +118,7 @@ for currency in currencies:
     currency.save()
 poolList = Pool.objects.select_related()
 for pool in poolList:
+    print pool
     pageParser(pool, html=getData(pool))
 
 
