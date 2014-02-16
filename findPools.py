@@ -3,9 +3,12 @@
 
 __author__ = 'lacina'
 
-import sys, os, re, urllib2, datetime, random
+import sys
+import os
+import re
+import urllib2
 import time
-import socket
+
 
 
 #
@@ -17,33 +20,37 @@ sys.path.append(os.path.abspath(__file__))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
 
 # Load up Django
-from django.db import models
 from poolWatchApp.models import *
-from django.contrib.auth.models import User as AuthUser
 
 
 class PoolT():
-    url=''
-    domain=''
-    httpURL=''
-    httpsURL=''
-    statsUrl=''
-    type=''
-    htmlOfGivenUrl=''
-    htmlOfGivenUrlClear=''
-    state=False
-    statHtml=''
-    statHtmlClear=''
+    url = ''
+    currency = ''
+    domain = ''
+    httpURL = ''
+    httpsURL = ''
+    statsUrl = ''
+    type = ''
+    htmlOfGivenUrl = ''
+    htmlOfGivenUrlClear = ''
+    state = False
+    stateStats = False
+    statHtml = ''
+    statHtmlClear = ''
+    statUrlJSON = ''
+    currencyCheckPage = ''
 
-# vycisti url
+    # vycisti url
     def cleanURL(self):
-        self.url=self.url.replace('http://', '')
-        self.url=self.url.replace('https://', '')
+        self.url = self.url.replace('http://', '')
+        self.url = self.url.replace('https://', '')
         cleanr = re.compile('/[\S]*')
-        self.url = re.sub(cleanr,'', self.url)
+        self.url = re.sub(cleanr, '', self.url)
         self.domain = re.sub(r"""^[a-zA-Z0-9-_]*.""", '', self.url)
+        self.httpURL = 'http://' + self.url
+        self.httpsURL = 'https://' + self.url
 
-    def getHtml(url):
+    def getHtml(self, url):
         hdr = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -51,12 +58,16 @@ class PoolT():
             'Accept-Encoding': 'none',
             'Accept-Language': 'en-US,en;q=0.8',
             'Connection': 'keep-alive'}
+        #print url
         req = urllib2.Request(url, headers=hdr)
         error = False
         try:
             response = urllib2.urlopen(req)
         except urllib2.HTTPError, e:
-            error=True
+            error = True
+            pass
+        except urllib2.URLError, e:
+            error = True
             pass
         if not error:
             return response.read()
@@ -64,38 +75,105 @@ class PoolT():
             return False
 
 
-    def cleanHtml(html):
+    def cleanHtml(self, html):
         cleanr = re.compile('<.*?>')
-        return re.sub(cleanr,'', html)
+        return re.sub(cleanr, '', html)
 
 
-# Otestuje typ poolu
+    # Otestuje typ poolu
     def testPool(self):
-        self.htmlOfGivenUrl = getHtml(url)
-            cleanr = re.compile('<.*?>')
-            self.htmlOfGivenUrlClear = re.sub(cleanr,'', self.htmlOfGivenUrl)
-            #print poolT.htmlOfGivenUrlClear
+        self.htmlOfGivenUrl = False
+        self.htmlOfGivenUrl = self.getHtml(self.httpURL)
+        if self.htmlOfGivenUrl:
+            self.htmlOfGivenUrlClear = self.cleanHtml(self.htmlOfGivenUrl)
             if re.search("MPOS by TheSerapher", self.htmlOfGivenUrlClear):
-                self.type="MPOS"
+                self.type = "MPOS"
                 self.state = True
-                self.statsUrl=poolT.httpURL+'/index.php?page=statistics&action=pool'
+                self.statsUrl = self.httpURL + '/index.php?page=statistics&action=pool'
+                self.statUrlJSON = self.httpURL + '/index.php?page=api&action=getpoolstatus&api_key='
+                self.currencyCheckPage = self.httpURL + '/index.php?page=gettingstarted'
 
-# otestuje dostupnost statistik
+    def testPoolCurrency(self):
+        if self.state:
+            self.stateStats = False
+            self.state = False
+            self.htmlOfGivenUrl = False
+            self.htmlOfGivenUrl = self.getHtml(self.currencyCheckPage)
+            if self.htmlOfGivenUrl:
+                self.htmlOfGivenUrlClear = self.cleanHtml(self.htmlOfGivenUrl)
+                #print self.htmlOfGivenUrlClear
+                if re.search(self.currency.shortname.lower(), self.htmlOfGivenUrlClear):
+                    self.stateStats = True
+                    self.state = True
+                if re.search(self.currency.shortname, self.htmlOfGivenUrlClear):
+                    self.stateStats = True
+                    self.state = True
+
+
+    # otestuje dostupnost statistik
     def testPoolStats(self):
+        if self.state:
+            self.htmlOfGivenUrl = False
+            self.htmlOfGivenUrl = self.getHtml(self.statsUrl)
+            if self.htmlOfGivenUrl:
+                self.htmlOfGivenUrlClear = self.cleanHtml(self.htmlOfGivenUrl)
+                #print self.htmlOfGivenUrlClear
+                if re.search('General Statistics', self.htmlOfGivenUrlClear):
+                    self.stateStats = True
 
 
 
+                    # prida pool
+
+    def addPool(self):
+        #print 1
+        if self.stateStats:
+            #print 2
+            if Pool.objects.filter(url=self.httpURL).count() == 0:
+                #print 3
+                pool = Pool()
+                pool.name = self.url
+                pool.url = self.httpURL
+                pool.urlstats = self.statsUrl
+                pool.urljson = self.statUrlJSON
+                pool.currency = self.currency
+                pool.save()
 
 
-urlStack = UrlStack.objects.filter(processed=False)
+urlStack = UrlStack.objects.all() #filter(processed=False)
+currencies = Currency.objects.all()
+
 for urlItem in urlStack:
-    poolT=PoolT()
-    poolT.url=urlItem.url
-    html = poolT.getHtml(poolT.url)
-    if html:
-        poolT.htmlOfGivenUrl=url
-        poolT.cleanHtml(html)
+    poolT = PoolT()
+    poolT.url = urlItem.url
+    poolT.currency = urlItem.currency
     poolT.cleanURL()
-    poolT.testURL()
-    print poolT.state
+    poolT.testPool()
+    if poolT.state == False:
+        urlItem.processed = True
+        urlItem.save()
+        pass
+    poolT.testPoolStats()
+    poolT.addPool()
+    urlItem.processed = True
+    urlItem.save()
+    #print poolT.stateStats
+    for currency in currencies:
+        time.sleep(0.2)
+        poolTry = PoolT()
+        poolTry.url = 'http://' + currency.shortname.lower() + '.' + poolT.domain
+        poolTry.currency = currency
+        poolTry.cleanURL()
+        poolTry.testPool()
+        if poolTry.state == False:
+            pass
+        poolTry.testPoolCurrency()
+        if poolTry.state == False:
+            pass
+        poolTry.testPoolStats()
+        poolTry.addPool()
+        urlItem.multipool = True
+        urlItem.save()
+
+
 

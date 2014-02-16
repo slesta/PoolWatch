@@ -6,8 +6,9 @@
 <ul class="nav navbar-nav">
     {% for page in page_branch %}
     {% if not has_home and page.is_primary and forloop.first %}
-    <li{% if on_home %} class="active"{% endif %} id="dropdown-menu-home">
-        <a href="{% url "home" %}">{% trans "Home" %}</a>
+    <li
+    {% if on_home %} class="active"{% endif %} id="dropdown-menu-home">
+    <a href="{% url " home" %}">{% trans "Home" %}</a>
     </li>
     {% endif %}
     {% if page.in_menu %}
@@ -18,8 +19,8 @@
         {% if page.has_children_in_menu %}
         class="dropdown-toggle disabled" data-toggle="dropdown"
         {% endif %}>
-            {{ page.title }}
-            {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
+        {{ page.title }}
+        {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
         </a>
         {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
     </li>

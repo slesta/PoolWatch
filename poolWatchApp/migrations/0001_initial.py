@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
-from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Adding model 'Currency'
         db.create_table(u'poolWatchApp_currency', (
@@ -64,7 +61,8 @@ class Migration(SchemaMigration):
             'poolHashRate': ('django.db.models.fields.FloatField', [], {'default': '1024', 'blank': 'True'}),
             'url': ('django.db.models.fields.CharField', [], {'max_length': '8'}),
             'urljson': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'urlstats': ('django.db.models.fields.URLField', [], {'default': '1024', 'max_length': '200', 'blank': 'True'})
+            'urlstats': (
+                'django.db.models.fields.URLField', [], {'default': '1024', 'max_length': '200', 'blank': 'True'})
         }
     }
 

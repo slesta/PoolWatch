@@ -3,10 +3,13 @@
 
 __author__ = 'lacina'
 
-import sys, os, re, urllib2, datetime, random
+import sys
+import os
+import re
+import urllib2
+import datetime
 import time
-import socket
-import BeautifulSoup
+
 
 
 #
@@ -18,27 +21,23 @@ sys.path.append(os.path.abspath(__file__))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'PoolWatch.settings'
 
 # Load up Django
-from django.db import models
 from poolWatchApp.models import *
-from django.contrib.auth.models import User as AuthUser
-
-
 
 
 def getData(pool):
     address = pool.urlstats
     hdr = {
-    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-    'Accept-Encoding': 'none',
-    'Accept-Language': 'en-US,en;q=0.8',
-    'Connection': 'keep-alive'}
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+        'Accept-Encoding': 'none',
+        'Accept-Language': 'en-US,en;q=0.8',
+        'Connection': 'keep-alive'}
     req = urllib2.Request(address, headers=hdr)
     html = ''
     pool.responseErr = ''
     start = time.time()
-    print start
+    #print start
     try:
         response = urllib2.urlopen(req)
     except urllib2.HTTPError, e:
@@ -52,26 +51,25 @@ def getData(pool):
 
     #Vyčistí od tagu
     cleanr = re.compile('<script>.*?</script>')
-    cleantext = re.sub(cleanr,'', html)
+    cleantext = re.sub(cleanr, '', html)
     cleanr = re.compile('<head>.*</head>')
-    cleantext = re.sub(cleanr,'', cleantext)
+    cleantext = re.sub(cleanr, '', cleantext)
     cleanr = re.compile('<.*?>')
-    cleantext = re.sub(cleanr,'', cleantext)
+    cleantext = re.sub(cleanr, '', cleantext)
     #print cleantext
 
-    soup = BeautifulSoup(html)
-    blacklist = ["script", "style" ]
-    for tag in soup.findAll():
-        if tag.name.lower() in blacklist:
-            # blacklisted tags are removed in their entirety
-            tag.extract()
-    print unicode(soup)
+    # soup = BeautifulSoup(html)
+    # blacklist = ["script", "style"]
+    # for tag in soup.findAll():
+    #     if tag.name.lower() in blacklist:
+    #         # blacklisted tags are removed in their entirety
+    #         tag.extract()
+    # print unicode(soup)
 
     return html
 
 
 def pageParser(pool, html):
-
     # common variables
 
     rawstr = r"""(?:[\W\S]*Pool Hash Rate)(?:[\W\S]*e">)(?P<poolHashRate>[0-9.]*)(?:[\S]+>[ ]*)(?P<poolHashRateUnit>[\S]*)(?:<[\S\W]*)(?:Pool Efficiency[\W\S]*td>)(?P<poolEfficiency>[0-9.%]*)(?:<[\W\S]*Current Difficulty[\S\W]*ff">)(?P<CDiff>[0-9.]*)"""
@@ -94,11 +92,19 @@ def pageParser(pool, html):
     pool.poolHashRate = poolHashRate
     pool.poolEfficiency = float(poolEfficiency.replace('%', ''))
     pool.currency.cdif = float(CDiff)
-    print pool.currency.cdif
+
     pool.save()
+    curr = Currency.objects.get(pk=pool.currency.id)
+    curr.cdif = float(CDiff)
+    curr.save()
+    print pool.currency.cdif
 
 
 #print getData('https://cash.hash.so')
+currencies = Currency.objects.all()
+for currency in currencies:
+    currency.cdif = 0
+    currency.save()
 poolList = Pool.objects.select_related()
 for pool in poolList:
     pageParser(pool, html=getData(pool))

@@ -1,7 +1,8 @@
 # coding: utf-8
 
-from django.db import models
 from HTMLParser import HTMLParser
+
+from django.db import models
 
 
 class MLStripper(HTMLParser):
@@ -94,10 +95,13 @@ class Pool(models.Model):
         verbose_name = 'Pool'
         verbose_name_plural = 'Pools'
 
+
 class UrlStack(models.Model):
+    currency = models.ForeignKey(Currency, verbose_name='Currency', editable=True)
     url = models.URLField('Pool URL', max_length="400", help_text='')
     processed = models.BooleanField('Processed', default=False)
     multiPool = models.BooleanField('Multi pool', default=False)
+
 
     def __unicode__(self):
         return self.url

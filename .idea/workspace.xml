@@ -1,15 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73890903-0181-4cb5-a242-e4ce0faca885" name="Default" comment="Initial commit&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0006_auto__del_url__add_urlstack.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/findPools.py" />
+    <list default="true" id="73890903-0181-4cb5-a242-e4ce0faca885" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0007_auto__add_field_urlstack_currency.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev.db" afterPath="$PROJECT_DIR$/dev.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0001_initial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0002_auto__chg_field_pool_urljson__chg_field_pool_url__chg_field_pool_urlst.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0002_auto__chg_field_pool_urljson__chg_field_pool_url__chg_field_pool_urlst.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0003_auto__chg_field_pool_lastUpdate.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0003_auto__chg_field_pool_lastUpdate.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0004_auto__add_field_pool_responseErr.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0004_auto__add_field_pool_responseErr.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/migrations/0006_auto__del_url__add_urlstack.py" afterPath="$PROJECT_DIR$/poolWatchApp/migrations/0006_auto__del_url__add_urlstack.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/errors/404.html" afterPath="$PROJECT_DIR$/templates/errors/404.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/errors/500.html" afterPath="$PROJECT_DIR$/templates/errors/500.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/admin.html" afterPath="$PROJECT_DIR$/templates/pages/menus/admin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/admin.py" afterPath="$PROJECT_DIR$/poolWatchApp/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/blog/blog_post_detail.html" afterPath="$PROJECT_DIR$/templates/blog/blog_post_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/blog/blog_post_list.html" afterPath="$PROJECT_DIR$/templates/blog/blog_post_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/breadcrumb.html" afterPath="$PROJECT_DIR$/templates/pages/menus/breadcrumb.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/comment.html" afterPath="$PROJECT_DIR$/templates/generic/includes/comment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/comments.html" afterPath="$PROJECT_DIR$/templates/generic/includes/comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/disqus_comments.html" afterPath="$PROJECT_DIR$/templates/generic/includes/disqus_comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/disqus_counts.html" afterPath="$PROJECT_DIR$/templates/generic/includes/disqus_counts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/disqus_sso.html" afterPath="$PROJECT_DIR$/templates/generic/includes/disqus_sso.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/dropdown.html" afterPath="$PROJECT_DIR$/templates/pages/menus/dropdown.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/editable_form.html" afterPath="$PROJECT_DIR$/templates/includes/editable_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/editable_loader.html" afterPath="$PROJECT_DIR$/templates/includes/editable_loader.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/editable_toolbar.html" afterPath="$PROJECT_DIR$/templates/includes/editable_toolbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fabfile.py" afterPath="$PROJECT_DIR$/fabfile.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/blog/includes/filter_panel.html" afterPath="$PROJECT_DIR$/templates/blog/includes/filter_panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/findPools.py" afterPath="$PROJECT_DIR$/findPools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/footer.html" afterPath="$PROJECT_DIR$/templates/pages/menus/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/footer_scripts.html" afterPath="$PROJECT_DIR$/templates/includes/footer_scripts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/footer_tree.html" afterPath="$PROJECT_DIR$/templates/pages/menus/footer_tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/form.html" afterPath="$PROJECT_DIR$/templates/pages/form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/email/form_response.html" afterPath="$PROJECT_DIR$/templates/email/form_response.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/gallery.html" afterPath="$PROJECT_DIR$/templates/pages/gallery.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getpooldata.py" afterPath="$PROJECT_DIR$/getpooldata.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/mobile.html" afterPath="$PROJECT_DIR$/templates/pages/menus/mobile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/models.py" afterPath="$PROJECT_DIR$/poolWatchApp/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/page.html" afterPath="$PROJECT_DIR$/templates/pages/page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/pagination.html" afterPath="$PROJECT_DIR$/templates/includes/pagination.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/primary.html" afterPath="$PROJECT_DIR$/templates/pages/menus/primary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/generic/includes/rating.html" afterPath="$PROJECT_DIR$/templates/generic/includes/rating.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/search_form.html" afterPath="$PROJECT_DIR$/templates/includes/search_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search_results.html" afterPath="$PROJECT_DIR$/templates/search_results.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/tests.py" afterPath="$PROJECT_DIR$/poolWatchApp/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/pages/menus/tree.html" afterPath="$PROJECT_DIR$/templates/pages/menus/tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/twitter/tweets.html" afterPath="$PROJECT_DIR$/templates/twitter/tweets.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urls.py" afterPath="$PROJECT_DIR$/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/includes/user_panel.html" afterPath="$PROJECT_DIR$/templates/includes/user_panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/poolWatchApp/views.py" afterPath="$PROJECT_DIR$/poolWatchApp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi.py" afterPath="$PROJECT_DIR$/wsgi.py" />
     </list>
     <ignored path="PoolWatch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,23 +124,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="getpooldata.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="getpooldata.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getpooldata.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="164" selection-end="164" vertical-scroll-proportion="0.22959183" vertical-offset="0" max-vertical-offset="2034">
+            <state line="105" column="0" selection-start="3073" selection-end="3106" vertical-scroll-proportion="0.0" vertical-offset="1602" max-vertical-offset="2178">
               <folding>
-                <element signature="e#70#115#0" expanded="true" />
+                <element signature="e#70#80#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="findPools.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="findPools.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/findPools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="16" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1926">
+            <state line="148" column="33" selection-start="4713" selection-end="4713" vertical-scroll-proportion="0.35714287" vertical-offset="2484" max-vertical-offset="3420">
               <folding>
-                <element signature="e#70#115#0" expanded="true" />
+                <element signature="e#70#80#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +149,10 @@
       <file leaf-file-name="0005_auto__add_url.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
-              <folding />
+            <state line="2" column="36" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
+              <folding>
+                <marker date="1392516640246" expanded="true" signature="24:84" placeholder="import ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,10 +160,8 @@
       <file leaf-file-name="admin.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poolWatchApp/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="28" selection-start="1702" selection-end="1702" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="882">
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state line="44" column="28" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="900">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,7 +178,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poolWatchApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="126">
               <folding />
             </state>
           </provider>
@@ -141,9 +187,9 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poolWatchApp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="14" selection-start="3181" selection-end="3189" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2034">
+            <state line="99" column="82" selection-start="3289" selection-end="3289" vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="2106">
               <folding>
-                <element signature="e#17#45#0" expanded="true" />
+                <element signature="e#17#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,7 +207,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1710">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1818">
               <folding />
             </state>
           </provider>
@@ -170,7 +216,7 @@
       <file leaf-file-name="local_settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local_settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="738">
+            <state line="23" column="0" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="684">
               <folding />
             </state>
           </provider>
@@ -196,8 +242,8 @@
         <option value="$PROJECT_DIR$/poolWatchApp/static/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/getpooldata.sh" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/poolWatchApp/models.py" />
         <option value="$PROJECT_DIR$/poolWatchApp/admin.py" />
+        <option value="$PROJECT_DIR$/poolWatchApp/models.py" />
         <option value="$PROJECT_DIR$/getpooldata.py" />
         <option value="$PROJECT_DIR$/findPools.py" />
       </list>
@@ -312,7 +358,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.findPools">
+  <component name="RunManager" selected="Python.getpooldata">
     <configuration default="false" name="getpooldata" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -658,8 +704,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.findPools" />
-        <item index="1" class="java.lang.String" itemvalue="Python.getpooldata" />
+        <item index="0" class="java.lang.String" itemvalue="Python.getpooldata" />
+        <item index="1" class="java.lang.String" itemvalue="Python.findPools" />
         <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in /home/lacina/IdeaProjects/PoolWatch" />
       </list>
     </recent_temporary>
@@ -712,7 +758,11 @@
       <created>1392492327830</created>
       <updated>1392492327830</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Initial commit&#10;">
+      <created>1392514122002</created>
+      <updated>1392514122002</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -737,7 +787,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1282" height="977" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -756,7 +806,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24554294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -793,7 +843,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="11" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1242">
           <folding>
-            <element signature="e#70#115#0" expanded="true" />
+            <element signature="e#70#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -815,9 +865,7 @@
     <entry file="file://$PROJECT_DIR$/poolWatchApp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="5" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="198">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -832,7 +880,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="91" selection-start="1589" selection-end="1589" vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="864">
           <folding>
-            <element signature="e#17#45#0" expanded="true" />
+            <element signature="e#17#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -921,7 +969,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local_settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="738">
+        <state line="23" column="0" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="684">
           <folding />
         </state>
       </provider>
@@ -935,43 +983,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/poolWatchApp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="28" selection-start="1702" selection-end="1702" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="882">
+        <state line="44" column="28" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="36" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1026">
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1392516640246" expanded="true" signature="24:84" placeholder="import ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/poolWatchApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="14" selection-start="3181" selection-end="3189" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2034">
+        <state line="99" column="82" selection-start="3289" selection-end="3289" vertical-scroll-proportion="0.0" vertical-offset="1332" max-vertical-offset="2106">
           <folding>
-            <element signature="e#17#45#0" expanded="true" />
+            <element signature="e#17#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getpooldata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="3073" selection-end="3106" vertical-scroll-proportion="0.0" vertical-offset="1602" max-vertical-offset="2178">
+          <folding>
+            <element signature="e#70#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/findPools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="16" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1926">
+        <state line="148" column="33" selection-start="4713" selection-end="4713" vertical-scroll-proportion="0.35714287" vertical-offset="2484" max-vertical-offset="3420">
           <folding>
-            <element signature="e#70#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poolWatchApp/migrations/0005_auto__add_url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getpooldata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="164" selection-end="164" vertical-scroll-proportion="0.22959183" vertical-offset="0" max-vertical-offset="2034">
-          <folding>
-            <element signature="e#70#115#0" expanded="true" />
+            <element signature="e#70#80#0" expanded="true" />
           </folding>
         </state>
       </provider>

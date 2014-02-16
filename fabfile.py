@@ -1,6 +1,5 @@
 from __future__ import print_function
 from __future__ import unicode_literals
-from future.builtins import input, open
 import os
 import re
 import sys
@@ -10,9 +9,13 @@ from glob import glob
 from contextlib import contextmanager
 from posixpath import join
 
+from future.builtins import input, open
+
 from fabric.api import env, cd, prefix, sudo as _sudo, run as _run, hide, task
 from fabric.contrib.files import exists, upload_template
 from fabric.colors import yellow, green, blue, red
+
+
 
 
 ################
@@ -20,7 +23,7 @@ from fabric.colors import yellow, green, blue, red
 ################
 
 conf = {}
-if sys.argv[0].split(os.sep)[-1] in ("fab",             # POSIX
+if sys.argv[0].split(os.sep)[-1] in ("fab", # POSIX
                                      "fab-script.py"):  # Windows
     # Ensure we import settings from the current dir
     try:
@@ -191,6 +194,7 @@ def log_call(func):
         header = "-" * len(func.__name__)
         _print(green("\n".join([header, func.__name__, header]), bold=True))
         return func(*args, **kawrgs)
+
     return logged
 
 
@@ -368,7 +372,7 @@ def create():
     with cd(env.venv_home):
         if exists(env.proj_name):
             prompt = input("\nVirtualenv exists: %s\nWould you like "
-                               "to replace it? (yes/no) " % env.proj_name)
+                           "to replace it? (yes/no) " % env.proj_name)
             if prompt.lower() != "yes":
                 print("\nAborting!")
                 return False
@@ -419,7 +423,7 @@ def create():
                "from django.contrib.sites.models import Site;"
                "site, _ = Site.objects.get_or_create(id=settings.SITE_ID);"
                "site.domain = '" + env.live_host + "';"
-               "site.save();")
+                                                   "site.save();")
         if env.admin_pass:
             pw = env.admin_pass
             user_py = ("from mezzanine.utils.models import get_user_model;"
@@ -481,7 +485,7 @@ def deploy():
     """
     if not exists(env.venv_path):
         prompt = input("\nVirtualenv doesn't exist: %s\nWould you like "
-                           "to create it? (yes/no) " % env.proj_name)
+                       "to create it? (yes/no) " % env.proj_name)
         if prompt.lower() != "yes":
             print("\nAborting!")
             return False
