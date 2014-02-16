@@ -6,6 +6,7 @@ __author__ = 'lacina'
 import sys, os, re, urllib2, datetime, random
 import time
 import socket
+import BeautifulSoup
 
 
 #
@@ -24,26 +25,52 @@ from django.contrib.auth.models import User as AuthUser
 
 
 
-
-import urllib2
-
 def getData(pool):
     address = pool.urlstats
-    req = urllib2.Request(address, headers={'User-Agent' : "Magic Browser"})
+    hdr = {
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+    'Accept-Encoding': 'none',
+    'Accept-Language': 'en-US,en;q=0.8',
+    'Connection': 'keep-alive'}
+    req = urllib2.Request(address, headers=hdr)
+    html = ''
+    pool.responseErr = ''
+    start = time.time()
+    print start
     try:
         response = urllib2.urlopen(req)
     except urllib2.HTTPError, e:
-        pool.responseErr= e.fp.read()
-        pool.save()
-    finally:
+        pool.responseErr = e.fp.read()
         pass
-
-
+    konec = time.time()
+    pool.pageLoad = konec - start
+    pool.lastUpdate = datetime.datetime.now()
+    pool.save()
     html = response.read()
+
+    #Vyčistí od tagu
+    cleanr = re.compile('<script>.*?</script>')
+    cleantext = re.sub(cleanr,'', html)
+    cleanr = re.compile('<head>.*</head>')
+    cleantext = re.sub(cleanr,'', cleantext)
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr,'', cleantext)
+    #print cleantext
+
+    soup = BeautifulSoup(html)
+    blacklist = ["script", "style" ]
+    for tag in soup.findAll():
+        if tag.name.lower() in blacklist:
+            # blacklisted tags are removed in their entirety
+            tag.extract()
+    print unicode(soup)
+
     return html
 
+
 def pageParser(pool, html):
-    import re
 
     # common variables
 
@@ -63,16 +90,16 @@ def pageParser(pool, html):
     CDiff = match_obj.group('CDiff')
     print poolEfficiency
     if poolHashRateUnit == 'MH/s':
-        poolHashRate=float(poolHashRate)*1000
+        poolHashRate = float(poolHashRate) * 1000
     pool.poolHashRate = poolHashRate
     pool.poolEfficiency = float(poolEfficiency.replace('%', ''))
-    pool.currency.cdif=float(CDiff)
+    pool.currency.cdif = float(CDiff)
+    print pool.currency.cdif
     pool.save()
 
 
-
 #print getData('https://cash.hash.so')
-poolList = Pool.objects.all()
+poolList = Pool.objects.select_related()
 for pool in poolList:
     pageParser(pool, html=getData(pool))
 
